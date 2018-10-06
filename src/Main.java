@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int NumOfMine = 0;
-        diff_Bord D = new diff_Bord();
-        int difficulty = out.start();
         Scanner sc = new Scanner(System.in);
+        diff_Bord D = new diff_Bord();
+        //難易度設定
+        int NumOfMine = 0;
+        int difficulty = out.start();
+
         if(difficulty == 1){
             D.line = 9;
             D.row = 9;
@@ -29,10 +31,21 @@ public class Main {
             System.out.println("地雷の数は？");
             NumOfMine = sc.nextInt();
         }
+
+        //ボード生成
         int[][][] card = new int[D.line][D.row][2];
         out.start_show(card);
-        generate.gen_Card(card, NumOfMine);
+        in.coordinate C = in.input_coordinate();
+        do{
+            generate.gen_Card(card, NumOfMine);
+        }while(card[C.line][C.row][1] == -1);
 
+        //メインループ
+        int NumOfOpend = scan.scan_NumOfOpend(card);
+        do{
+            in.coordinate X = in.input_coordinate();
+
+        }while( NumOfOpend == NumOfMine );
         out.show_Card(card);
 
     }
