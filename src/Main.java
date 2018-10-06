@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int difficulty = show_Card.start();
+        int difficulty = out.start();
         int NumOfMine = 0;
         diff_Bord D = new diff_Bord();
         Scanner sc = new Scanner(System.in);
@@ -30,10 +30,10 @@ public class Main {
             NumOfMine = sc.nextInt();
         }
         int[][][] card = new int[D.line][D.row][2];
-        show_Card.start_show(card);
-        generate_Card.generate(card, NumOfMine);
+        out.start_show(card);
+        generate.gen_Card(card, NumOfMine);
 
-        show_Card.show(card);
+        out.show_Card(card);
 
     }
     static class diff_Bord{
