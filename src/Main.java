@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int difficulty = out.start();
         int NumOfMine = 0;
         diff_Bord D = new diff_Bord();
+        int difficulty = out.start();
         Scanner sc = new Scanner(System.in);
         if(difficulty == 1){
             D.line = 9;
