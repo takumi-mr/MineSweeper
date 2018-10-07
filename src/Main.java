@@ -40,12 +40,18 @@ public class Main {
             generate.gen_Card(card, NumOfMine);
         }while(card[C.line][C.row][1] == -1);
 
+        open.open_Tile(card, C.line, C.row);
+
         //メインループ
         int NumOfOpend = scan.scan_NumOfOpend(card);
         do{
             in.coordinate X = in.input_coordinate();
-
-        }while( NumOfOpend == NumOfMine );
+            open.open_Tile(card, X.line, X.row);
+            if(card[X.line][X.row][1] == -1){
+                System.out.println("GAME OVER");
+                break;
+            }
+        }while( NumOfOpend == (D.line * D.row) - NumOfMine );
         out.show_Card(card);
 
     }
