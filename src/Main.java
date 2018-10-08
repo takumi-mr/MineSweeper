@@ -47,6 +47,7 @@ public class Main {
         do{
             in.coordinate X = in.input_coordinate();
             open.open_Tile(card, X.line, X.row);
+            out.printout(card);
             if(card[X.line][X.row][1] == -1){
                 System.out.println("GAME OVER");
                 break;
