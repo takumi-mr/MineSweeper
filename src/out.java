@@ -37,7 +37,7 @@ public class out {
         int difficulty = sc.nextInt();
         return difficulty;
     }
-    public static void start_show(int [][][] matrix){
+    public static void start_show(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
                 System.out.print("○");
@@ -46,5 +46,21 @@ public class out {
         }
         System.out.printf("\n");
         System.out.println("どのマスを選びますか？");
+    }
+    public static void Game_Over(int[][][] matrix){
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j][1] == -1){
+                    System.out.print("×");
+                }
+                else if(matrix[i][j][0] == 1){
+                    System.out.print(matrix[i][j][1]);
+                }
+                else{
+                    System.out.print("○");
+                }
+            }
+            System.out.printf("\n");
+        }
     }
 }

@@ -49,7 +49,7 @@ public class Main {
             open.open_Tile(card, X.line, X.row);
             out.printout(card);
             if(card[X.line][X.row][1] == -1){
-                System.out.println("GAME OVER");
+                out.Game_Over(card);
                 break;
             }
         }while( NumOfOpend == (D.line * D.row) - NumOfMine );
