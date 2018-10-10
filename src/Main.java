@@ -34,7 +34,8 @@ public class Main {
 
         //ボード生成
         int[][][] card = new int[D.line][D.row][2];
-        out.start_show(card);
+        out.printout(card);
+        System.out.println("どのマスを選びますか？");
         in.coordinate C = in.input_coordinate();
         do{
             generate.gen_Card(card, NumOfMine);

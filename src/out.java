@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
 public class out {
+    //カードの中身を表示
     public static void show_Card(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
                 if (matrix[i][j][1] != -1){
-                    System.out.print("○");
+                    System.out.print("□");
                 }
                 else{
                     System.out.print("×");
@@ -14,14 +15,20 @@ public class out {
             System.out.printf("\n");
         }
     }
+    //更新ごとにカードを表示
     public static void printout(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
                 if (matrix[i][j][0] == 0){
-                    System.out.print("○");
+                    System.out.print("□");
                 }
                 else if(matrix[i][j][0] == 1){
-                    System.out.print("×");
+                    if(matrix[i][j][1] == 0){
+                        System.out.print("0");
+                    }
+                    else {
+                        System.out.print(matrix[i][j][1]);
+                    }
                 }
             }
             System.out.printf("\n");
@@ -37,16 +44,7 @@ public class out {
         int difficulty = sc.nextInt();
         return difficulty;
     }
-    public static void start_show(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                System.out.print("○");
-            }
-            System.out.printf("\n");
-        }
-        System.out.printf("\n");
-        System.out.println("どのマスを選びますか？");
-    }
+    //ゲームオーバーのときのカードを表示
     public static void Game_Over(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
@@ -57,7 +55,7 @@ public class out {
                     System.out.print(matrix[i][j][1]);
                 }
                 else{
-                    System.out.print("○");
+                    System.out.print("□");
                 }
             }
             System.out.printf("\n");

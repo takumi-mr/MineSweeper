@@ -3,14 +3,16 @@ public class open {
         if (isOpend(matrix, line, row) == 0) {
             OpenAroundTile(matrix, line, row);
         }
-
+        else{
+            System.out.println("すでに開いています");
+        }
     }
 
     private static int isOpend(int[][][] matrix, int line, int row) {
         if (matrix[line][row][1] == 1) {
-            return 0;
-        } else {
             return 1;
+        } else {
+            return 0;
         }
     }
 
