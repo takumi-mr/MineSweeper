@@ -17,7 +17,7 @@ public class open {
     }
 
     private static void OpenAroundTile(int[][][] matrix, int line, int row) {
-
+        matrix[line][row][0] = 1;
     }
     private static int check_null(int[][][] matrix, int line, int row){
         try{

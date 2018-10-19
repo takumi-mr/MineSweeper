@@ -29,11 +29,23 @@ public class generate {
         }
     }
 
-    private static int search_Around_Bomb(int[][][] matrix, int x, int y) {
-        int n = 0;
+    public static int search_Around_Bomb(int[][][] matrix, int x, int y) {
         try{
-
+            if(matrix[x][y][1]==1){
+                return 1;
+            }
         }catch(ArrayIndexOutOfBoundsException e){}
+        return 0;
+    }
+
+    private static int isOutofBounds(int[][][] matrix, int x, int y){
+        try{
+            if(matrix[x][y][0]==1||matrix[x][y][0]==0){
+                return 0;
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            return 1;
+        }
         return 0;
     }
 

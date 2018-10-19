@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        diff_Bord D = new diff_Bord();
+        diff_Bord D = difficulty_in.input_difficulty();
         //難易度設定
         int NumOfMine = 0;
         int difficulty = out.start();
