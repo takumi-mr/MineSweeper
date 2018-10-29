@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class difficulty_in {
-    public static Main.diff_Bord input_difficulty(){
+    public static diff_Bord input_difficulty(){
         Scanner sc = new Scanner(System.in);
-        Main.diff_Bord D = new Main.diff_Bord();
-        int NumOfMine;
+        diff_Bord D = new diff_Bord();
+        int NumOfMine = 0;
         int difficulty = sc.nextInt();
         if(difficulty == 1){
             D.line = 9;
@@ -31,4 +31,17 @@ public class difficulty_in {
         }
         return D;
     }
+    static class diff_Bord{
+        int line;
+        int row;
+        int NumOfMine;
+        public diff_Bord diff(int x,int y,int z){
+            diff_Bord D = new diff_Bord();
+            D.line = x;
+            D.row = y;
+            D.NumOfMine = z;
+            return D;
+        }
+    }
 }
+
