@@ -48,14 +48,42 @@ public class out {
     public static void Game_Over(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
-                if(matrix[i][j][1] == -1){
+                if(matrix[i][j][0] == -1){
                     System.out.print("×");
                 }
+                else{
+                    System.out.print(matrix[i][j][0]);
+                }
+            }
+            System.out.printf("\n");
+        }
+    }
+    public static void check(int[][][] matrix){
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if (matrix[i][j][0] == 0){
+                    System.out.print("□");
+                }
                 else if(matrix[i][j][0] == 1){
-                    System.out.print(matrix[i][j][1]);
+                    if(matrix[i][j][1] == 0){
+                        System.out.print("0");
+                    }
+                    else {
+                        System.out.print(matrix[i][j][1]);
+                    }
+                }
+            }
+            System.out.printf("\n");
+        }
+    }
+    public static void test(int[][][] matrix){
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j][0] == -1){
+                    System.out.print("x ");
                 }
                 else{
-                    System.out.print("□");
+                        System.out.print(matrix[i][j][0]+" ");
                 }
             }
             System.out.printf("\n");

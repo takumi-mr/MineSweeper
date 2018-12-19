@@ -3,7 +3,7 @@ import java.util.Random;
 public class generate {
     public static void gen_Card(int[][][] matrix, int numOfMine){
         generate_Bomb(matrix, numOfMine);
-        generate_Flag(matrix);
+        generate_Num(matrix);
     }
     private static void generate_Bomb(int[][][] matrix, int numOfMine){
         Random rnd = new Random();
@@ -19,35 +19,39 @@ public class generate {
         }
 
     }
-    private static void generate_Flag(int[][][] matrix){
+    private static void generate_Num(int[][][] matrix){
         for(int i=0; i<matrix.length; i++){
             for(int j=0; j<matrix[0].length; j++){
-                if(matrix[i][j][1] != -1){
-                    matrix[i][j][1] = search_Around_Bomb(matrix, i, j);
+                if(matrix[i][j][0] != -1){
+                    matrix[i][j][0] = Around_Search(matrix, i, j);
                 }
             }
         }
     }
 
-    public static int search_Around_Bomb(int[][][] matrix, int x, int y) {
+    private static int Around_Search(int[][][] matrix, int x, int y){
+        int n = 0;
+        n += isBomb(matrix,x-1,y-1);
+        n += isBomb(matrix,x-1,y);
+        n += isBomb(matrix,x-1,y+1);
+        n += isBomb(matrix,x,y-1);
+        n += isBomb(matrix,x,y+1);
+        n += isBomb(matrix,x+1,y-1);
+        n += isBomb(matrix,x+1,y);
+        n += isBomb(matrix,x+1,y+1);
+        return n;
+    }
+
+    private static int isBomb(int[][][] matrix, int x, int y){
         try{
-            if(matrix[x][y][1]==1){
+            if(matrix[x][y][0] == -1){
                 return 1;
             }
-        }catch(ArrayIndexOutOfBoundsException e){}
+        }
+        catch (ArrayIndexOutOfBoundsException e){ }
         return 0;
     }
 
-    private static int isOutofBounds(int[][][] matrix, int x, int y){
-        try{
-            if(matrix[x][y][0]==1||matrix[x][y][0]==0){
-                return 0;
-            }
-        }catch (ArrayIndexOutOfBoundsException e){
-            return 1;
-        }
-        return 0;
-    }
 
     private static void search_coordinate(int[][][] martix, int number, int numOfLine){
         int nline = number / numOfLine + 1;
@@ -56,6 +60,6 @@ public class generate {
             nline--;
             nrow = martix[0].length;
         }
-        martix[nline-1][nrow-1][1]=-1;
+        martix[nline-1][nrow-1][0]=-1;
     }
 }

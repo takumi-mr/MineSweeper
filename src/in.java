@@ -14,11 +14,13 @@ public class in {
     static class coordinate{
         int line;
         int row;
-        public coordinate diff(int x,int y){
-            coordinate D = new coordinate();
-            D.line = x;
-            D.row = y;
-            return D;
+        public coordinate (){
+            line = 0;
+            row = 0;
+        }
+        public coordinate (int x,int y){
+            line = x;
+            row = y;
         }
     }
 }

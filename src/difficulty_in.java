@@ -1,25 +1,24 @@
 import java.util.Scanner;
 
 public class difficulty_in {
-    public static diff_Bord input_difficulty(){
+    public static diff_Bord input_difficulty(int n){
         Scanner sc = new Scanner(System.in);
         diff_Bord D = new diff_Bord();
-        int NumOfMine = 0;
-        int difficulty = sc.nextInt();
+        int difficulty = n;
         if(difficulty == 1){
             D.line = 9;
             D.row = 9;
-            NumOfMine = 10;
+            D.NumOfMine = 10;
         }
         else if(difficulty == 2){
             D.line = 16;
             D.row = 16;
-            NumOfMine = 40;
+            D.NumOfMine = 40;
         }
         else if(difficulty == 3){
             D.line = 30;
             D.row = 16;
-            NumOfMine = 99;
+            D.NumOfMine = 99;
         }
         else if(difficulty == 4){
             System.out.println("縦のマス数は？");
@@ -27,7 +26,7 @@ public class difficulty_in {
             System.out.println("横のマス数は？");
             D.row = sc.nextInt();
             System.out.println("地雷の数は？");
-            NumOfMine = sc.nextInt();
+            D.NumOfMine = sc.nextInt();
         }
         return D;
     }
@@ -35,12 +34,15 @@ public class difficulty_in {
         int line;
         int row;
         int NumOfMine;
-        public diff_Bord diff(int x,int y,int z){
-            diff_Bord D = new diff_Bord();
-            D.line = x;
-            D.row = y;
-            D.NumOfMine = z;
-            return D;
+        private diff_Bord(){
+            line = 0;
+            row = 0;
+            NumOfMine = 0;
+        }
+        private diff_Bord(int x,int y, int z){
+            line = x;
+            row = y;
+            NumOfMine = z;
         }
     }
 }
