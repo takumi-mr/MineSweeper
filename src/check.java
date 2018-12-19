@@ -16,7 +16,16 @@ public class check {
                 return 1;
             }
         }
-        catch (ArrayIndexOutOfBoundsException e){ }
+        catch (ArrayIndexOutOfBoundsException e){
+        }
         return 0;
+    }
+    private static boolean isNull(int[][][] matrix, int Row, int Column){
+        try{
+            if(matrix[Row][Column][0] == 0)
+            return false;
+        } catch (ArrayIndexOutOfBoundsException e){
+        }
+        return true;
     }
 }

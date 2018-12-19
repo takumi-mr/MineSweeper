@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class difficulty_in {
-    public static BordDifficulty input_difficulty(int n){
+public class set_Difficulty {
+    public static BordDifficulty input(int n){
         Scanner sc = new Scanner(System.in);
         BordDifficulty D = new BordDifficulty();
         int difficulty = n;
