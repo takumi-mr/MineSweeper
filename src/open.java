@@ -1,25 +1,25 @@
 public class open {
-    public static void open_Tile(int[][][] matrix, int line, int row) {
-        if (isOpend(matrix, line, row) == 0) {
-            OpenAroundTile(matrix, line, row);
+    public static void open_Tile(int[][][] matrix, in.coordinate C) {
+        if (isOpend(matrix, C.Row, C.Column)) {
+            System.out.println("すでに開いています");
         }
         else{
-            System.out.println("すでに開いています");
+            OpenAroundTile(matrix, C.Row, C.Column);
         }
     }
 
-    private static int isOpend(int[][][] matrix, int line, int row) {
+    private static boolean isOpend(int[][][] matrix, int line, int row) {
         if (matrix[line][row][1] == 1) {
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 
     private static void OpenAroundTile(int[][][] matrix, int line, int row) {
         matrix[line][row][0] = 1;
     }
-    private static int check_null(int[][][] matrix, int line, int row){
+    private static int check_null(int[][][] matrix, int Row, int Column){
         try{
             return 1;
         } catch (ArrayIndexOutOfBoundsException e){
