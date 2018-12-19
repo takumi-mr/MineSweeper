@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class in {
+public class input {
     static class coordinate{
         int Row;
         int Column;
@@ -8,7 +8,7 @@ public class in {
             Column = 0;
         }
     }
-    public static coordinate input_coordinate(){
+    public static coordinate coordinate(){
         Scanner sc = new Scanner(System.in);
         System.out.println("座標を入力してください( 例;(x,y) → \"x y\" )");
         String str = sc.nextLine();

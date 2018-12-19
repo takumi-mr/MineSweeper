@@ -7,6 +7,6 @@ public class Main {
         generate.gen_Card(card, D.NumOfMine);
 
 
-        out.test(card);
+        out.Game_Over(card);
     }
 }

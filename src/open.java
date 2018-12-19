@@ -1,5 +1,5 @@
 public class open {
-    public static void open_Tile(int[][][] matrix, in.coordinate C) {
+    public static void open_Tile(int[][][] matrix, input.coordinate C) {
         if (isOpend(matrix, C.Row, C.Column)) {
             System.out.println("すでに開いています");
         }

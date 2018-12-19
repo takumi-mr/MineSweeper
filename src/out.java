@@ -11,56 +11,21 @@ public class out {
         int difficulty = sc.nextInt();
         return difficulty;
     }
-    //生成したカードの中身表示(デバッグ)
-    public static void test(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                if(matrix[i][j][0] == -1){
-                    System.out.print("x ");
-                }
-                else{
-                    System.out.print(matrix[i][j][0]+" ");
-                }
-            }
-            System.out.printf("\n");
-        }
-    }
-
-
-    //カードの中身を表示
-    public static void show_Card(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                if (matrix[i][j][0] != -1){
-                    System.out.print("□");
-                }
-                else{
-                    System.out.print("×");
-                }
-            }
-            System.out.printf("\n");
-        }
-    }
-    //更新ごとにカードを表示
+    //カードの状態を表示
     public static void printout(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
                 if (matrix[i][j][1] == 0){
                     System.out.print("□");
                 }
-                else if(matrix[i][j][0] == 1){
-                    if(matrix[i][j][1] == 0){
-                        System.out.print("0");
-                    }
-                    else {
-                        System.out.print(matrix[i][j][1]);
-                    }
+                else if (matrix[i][j][1] == 1){
+                    System.out.print(matrix[i][j][0]);
                 }
             }
             System.out.printf("\n");
         }
     }
-    //ゲームオーバーのときのカードを表示
+    //生成したカードの中身表示
     public static void Game_Over(int[][][] matrix){
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
@@ -68,29 +33,24 @@ public class out {
                     System.out.print("×");
                 }
                 else{
-                    System.out.print(matrix[i][j][0]);
+                    System.out.print(HALFtoFULLNumber(String.valueOf(matrix[i][j][0])));
                 }
             }
             System.out.printf("\n");
         }
     }
-    public static void check(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
-                if (matrix[i][j][0] == 0){
-                    System.out.print("□");
-                }
-                else if(matrix[i][j][0] == 1){
-                    if(matrix[i][j][1] == 0){
-                        System.out.print("0");
-                    }
-                    else {
-                        System.out.print(matrix[i][j][1]);
-                    }
-                }
-            }
-            System.out.printf("\n");
+    //半角数字を全角数字に変換
+    private static String HALFtoFULLNumber(String str) {
+        if (str == null){
+            throw new IllegalArgumentException();
         }
+        StringBuffer sb = new StringBuffer(str);
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if ('0' <= c && c <= '9') {
+                sb.setCharAt(i, (char) (c - '0' + '０'));
+            }
+        }
+        return sb.toString();
     }
-
 }
