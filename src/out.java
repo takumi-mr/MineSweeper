@@ -13,8 +13,8 @@ public class out {
     }
     //カードの状態を表示
     public static void printout(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
                 if (matrix[i][j][1] == 0){
                     System.out.print("□");
                 }
@@ -27,8 +27,8 @@ public class out {
     }
     //生成したカードの中身表示
     public static void Game_Over(int[][][] matrix){
-        for(int i=0;i<matrix.length;i++){
-            for(int j=0;j<matrix[0].length;j++){
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0;j < matrix[0].length; j++){
                 if(matrix[i][j][0] == -1){
                     System.out.print("×");
                 }
