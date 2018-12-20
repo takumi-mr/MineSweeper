@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class generate {
-    public static void gen_Card(Square[][] card, int NumOfMine){
+    public static void generate_Card(Square[][] card, int NumOfMine){
         init(card);
         generate_Bomb(card, NumOfMine);
         generate_Num(card);
