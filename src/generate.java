@@ -1,13 +1,21 @@
 import java.util.Random;
 
 public class generate {
-    public static void gen_Card(int[][][] matrix, int NumOfMine){
-        generate_Bomb(matrix, NumOfMine);
-        generate_Num(matrix);
+    public static void gen_Card(Square[][] card, int NumOfMine){
+        init(card);
+        generate_Bomb(card, NumOfMine);
+        generate_Num(card);
     }
-    private static void generate_Bomb(int[][][] matrix, int NumOfMine){
+    private static void init(Square[][] card){
+        for(int i=0; i < card.length; i++){
+            for(int j=0; j < card[0].length; j++){
+                card[i][j] = new Square();
+            }
+        }
+    }
+    private static void generate_Bomb(Square[][] card, int NumOfMine){
         Random rnd = new Random();
-        int All = (matrix.length) * (matrix[0].length);
+        int All = (card.length) * (card[0].length);
         int[] flag = new int [All];
         int number;
         for(int i=0; i < NumOfMine; i++){
@@ -15,40 +23,44 @@ public class generate {
                 number = rnd.nextInt(All)+1;
             }while(flag[number-1] == 1);
             flag[number-1] = 1;
-            set_Bomb(matrix, number, matrix[0].length);
+            setMine(card, number, card[0].length);
         }
-
     }
-    private static void generate_Num(int[][][] matrix){
-        for(int i=0; i < matrix.length; i++){
-            for(int j=0; j < matrix[0].length; j++){
-                if(matrix[i][j][0] != -1){
-                    matrix[i][j][0] = Around_Search(matrix, i, j);
+    private static void generate_Num(Square[][] card){
+        for(int i=0; i < card.length; i++){
+            for(int j=0; j < card[0].length; j++){
+                if(card[i][j].isMine()){
+                    Around_Search(card, i, j);
                 }
             }
         }
     }
 
-    private static int Around_Search(int[][][] matrix, int Row, int Column){
-        int n = 0;
-        n += check.isBomb(matrix,Row-1,Column-1);
-        n += check.isBomb(matrix,Row-1,Column);
-        n += check.isBomb(matrix,Row-1,Column+1);
-        n += check.isBomb(matrix,Row,Column-1);
-        n += check.isBomb(matrix,Row,Column+1);
-        n += check.isBomb(matrix,Row+1,Column-1);
-        n += check.isBomb(matrix,Row+1,Column);
-        n += check.isBomb(matrix,Row+1,Column+1);
-        return n;
+    private static void Around_Search(Square[][] card, int Row, int Column){
+        Around_add(card,Row-1,Column-1);
+        Around_add(card,Row-1,Column);
+        Around_add(card,Row-1,Column+1);
+        Around_add(card,Row,Column-1);
+        Around_add(card,Row,Column+1);
+        Around_add(card,Row+1,Column-1);
+        Around_add(card,Row+1,Column);
+        Around_add(card,Row+1,Column+1);
     }
 
-    private static void set_Bomb(int[][][] martix, int number, int NumOfLine){
+    private static void Around_add(Square[][] card, int Row, int Column){
+        try{
+            card[Row][Column].addNumOfMine();
+        }
+        catch(ArrayIndexOutOfBoundsException e){}
+    }
+
+    private static void setMine(Square[][] card, int number, int NumOfLine){
         int nline = number / NumOfLine + 1;
         int nrow = number - (NumOfLine * (nline-1));
         if(nrow == 0 ) {
             nline--;
-            nrow = martix[0].length;
+            nrow = card[0].length;
         }
-        martix[nline-1][nrow-1][0] = -1;
+        card[nline-1][nrow-1].setMine();
     }
 }

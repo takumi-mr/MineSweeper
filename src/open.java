@@ -16,6 +16,7 @@ public class open {
         }
     }
 
+
     private static void OpenAroundTile(int[][][] matrix, int line, int row) {
         matrix[line][row][0] = 1;
     }
