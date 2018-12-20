@@ -8,6 +8,13 @@ public class Main {
         do{
             generate.generate_Card(card, D.NumOfMine);
         }while(card[XY.Row][XY.Column].isMine());
+        do{
+            out.printout(card);
+            if(check.scan_Opend(card) == D.NumOfMine){
+                out.Game_Over(card);
+                System.out.println("GAME CLEAR");
+            }
+        }while(!check.isGameClear());
         out.Game_Over(card);
     }
 }
