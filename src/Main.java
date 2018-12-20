@@ -7,7 +7,7 @@ public class Main {
         //ボード生成
         do{
             generate.generate_Card(card, D.NumOfMine);
-        }while(card[XY.Row][XY.Column].getNumOfMine() == -1);
+        }while(card[XY.Row][XY.Column].isMine());
         out.Game_Over(card);
     }
 }
