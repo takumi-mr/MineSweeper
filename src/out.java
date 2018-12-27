@@ -15,10 +15,10 @@ public class out {
     public static void printout(Square[][] card){
         for(int i = 0; i < card.length; i++){
             for(int j = 0; j < card[0].length; j++){
-                if (!card[i][j].isOpend()){
+                if (!card[i][j].isOpened()){
                     System.out.print("□");
                 }
-                else if (card[i][j].isOpend()){
+                else if (card[i][j].isOpened()){
                     System.out.print(card[i][j].getNumOfMine());
                 }
             }
