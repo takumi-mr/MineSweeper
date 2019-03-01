@@ -1,4 +1,4 @@
-public class Opener {
+public class Open {
     public static int Square(Square[][] card, int Row, int Column){
         if(card[Row][Column].isOpened()){
             System.out.println("すでに空いています");

@@ -4,7 +4,7 @@ public class Main {
         do{
             Generator.generate_Card(board.CARD, board.D.NumOfMine);
         }while(board.CARD[board.XY.Row][board.XY.Column].getNumOfMine() != 0);
-        Opener.Square(board.CARD, board.XY.Row, board.XY.Column);
+        Open.Square(board.CARD, board.XY.Row, board.XY.Column);
 
         Checker check = new Checker(board.D.NumOfMine);
 
@@ -13,7 +13,7 @@ public class Main {
         while(!check.isClear(board.CARD) && GAME_STATE != 1){
             Output.out(board.CARD);
             board.XY.update();
-            GAME_STATE = Opener.Square(board.CARD, board.XY.Row, board.XY.Column);
+            GAME_STATE = Open.Square(board.CARD, board.XY.Row, board.XY.Column);
         }
         if(GAME_STATE == 1){
             System.out.println("地雷");
