@@ -6,6 +6,7 @@ public class open {
         }
         else if(card[Row][Column].isMine()){
             System.out.println("地雷");
+            System.out.println("GAME OVER");
             out.Game_Over(card);
             return;
         }
@@ -17,6 +18,9 @@ public class open {
             return;
         }
         if(card[Row][Column].Checked){
+            return;
+        }
+        if(card[Row][Column].isMine()){
             return;
         }
         else if(!card[Row][Column].isZero()){

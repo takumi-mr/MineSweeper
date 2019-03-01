@@ -11,12 +11,14 @@ public class Main {
         open.Square(card, XY.Row, XY.Column);
 
         Checker check = new Checker(D.NumOfMine);
-        do{
+        
+        while(!check.isClear(card)){
             out.out(card);
             out.debug(card);
             XY.update();
             open.Square(card, XY.Row, XY.Column);
-        }while(!check.isClear(card));
+        }
+        System.out.println("GAME CLEAR");
         out.Game_Over(card);
     }
 }

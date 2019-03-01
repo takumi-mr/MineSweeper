@@ -14,6 +14,7 @@ public class out {
     //カードの状態を表示
     public static void out(Square[][] card){
         System.out.println(" 　|１２３４５６７８９");
+        System.out.println("_＿_＿＿＿＿＿＿＿＿＿");
         for(int i = 0; i < card.length; i++){
             System.out.printf(i+1+"　|");
             for(int j = 0; j < card[0].length; j++){
@@ -29,7 +30,6 @@ public class out {
     }
     //生成したカードの中身表示
     public static void Game_Over(Square[][] card){
-        System.out.println("GAME OVER");
         for(int i = 0; i < card.length; i++){
             for(int j = 0;j < card[0].length; j++){
                 if(card[i][j].isMine()){

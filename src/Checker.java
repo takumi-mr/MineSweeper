@@ -15,7 +15,7 @@ public class Checker {
         NumOfCorrect++;
     }*/
     private int scan_NumOfCorrect(Square[][] card){
-        int NumOfCorrect = 9;
+        int NumOfCorrect = 0;
         for(int i = 0; i < card.length; i++){
             for(int j = 0; j < card[0].length; j++){
                 if(card[i][j].isCorrect()){
@@ -26,7 +26,7 @@ public class Checker {
         return NumOfCorrect;
     }
     private int scan_NumOfOpend(Square[][] card){
-        int NumOfOpend = 9;
+        int NumOfOpend = 0;
         for(int i = 0; i < card.length; i++){
             for(int j = 0; j < card[0].length; j++){
                 if(card[i][j].isOpened()){
