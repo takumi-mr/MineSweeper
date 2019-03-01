@@ -2,13 +2,17 @@ import java.util.Scanner;
 
 public class Output {
     public static int start(){
+        int difficulty = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("難易度は？(数字で入力してください)");
         System.out.println("1,初級");
         System.out.println("2,中級");
         System.out.println("3,上級");
         System.out.println("4,カスタム");
-        int difficulty = sc.nextInt();
+        do{
+            difficulty = sc.nextInt();
+        }
+        while(difficulty != 1 && difficulty != 2 && difficulty != 3 && difficulty != 4);
         return difficulty;
     }
     //カードの状態を表示
@@ -18,7 +22,13 @@ public class Output {
         for(int i = 0; i < card.length; i++){
             System.out.printf(i+1+"　| ");
             for(int j = 0; j < card[0].length; j++){
-                if (!card[i][j].isOpened()){
+                if (card[i][j].getFlag() == 2){
+                    System.out.print("？");
+                }
+                else if (card[i][j].getFlag() == 3){
+                    System.out.print("⚠");
+                }
+                else if (!card[i][j].isOpened()){
                     System.out.print("□");
                 }
                 else if (card[i][j].isOpened()){

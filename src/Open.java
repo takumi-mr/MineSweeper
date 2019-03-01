@@ -8,6 +8,10 @@ public class Open {
             open_and_check(card,Row,Column);
             return 1;
         }
+        else if(card[Row][Column].getFlag() == 1 || card[Row][Column].getFlag() == 2){
+            System.out.println("マーク済みのマスです");
+            return 0;
+        }
         open(card, Row, Column);
         init_check(card);
         return 0;
@@ -16,10 +20,13 @@ public class Open {
         if(isNull(card,Row,Column)){
             return;
         }
-        if(card[Row][Column].Checked){
+        else if(card[Row][Column].Checked){
             return;
         }
-        if(card[Row][Column].isMine()){
+        else if(card[Row][Column].isMine()){
+            return;
+        }
+        else if(card[Row][Column].getFlag() == 1 || card[Row][Column].getFlag() == 2){
             return;
         }
         else if(!card[Row][Column].isZero()){
@@ -41,6 +48,7 @@ public class Open {
     private static void open_and_check(Square[][] card, int Row, int Column){
         card[Row][Column].Open();
         card[Row][Column].setChecked();
+        card[Row][Column].flagReset();
     }
     //チェックフラグ初期化
     private static void init_check(Square[][] card){
