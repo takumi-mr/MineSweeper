@@ -1,63 +1,62 @@
 import java.util.Scanner;
 
 public class Output {
-    public static int start(){
-        int difficulty = 0;
+    public static int start() {
+        int difficulty;
         Scanner sc = new Scanner(System.in);
         System.out.println("難易度は？(数字で入力してください)");
         System.out.println("1,初級");
         System.out.println("2,中級");
         System.out.println("3,上級");
         System.out.println("4,カスタム");
-        do{
+        do {
             difficulty = sc.nextInt();
         }
-        while(difficulty != 1 && difficulty != 2 && difficulty != 3 && difficulty != 4);
+        while (difficulty != 1 && difficulty != 2 && difficulty != 3 && difficulty != 4);
         return difficulty;
     }
+
     //カードの状態を表示
-    public static void out(Square[][] card){
+    public static void out(Square[][] card) {
         System.out.println(" 　| １２３４５６７８９");
         System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
-        for(int i = 0; i < card.length; i++){
-            System.out.printf(i+1+"　| ");
-            for(int j = 0; j < card[0].length; j++){
-                if (card[i][j].getFlag() == 2){
+        for (int i = 0; i < card.length; i++) {
+            System.out.print(i + 1 + "　| ");
+            for (int j = 0; j < card[0].length; j++) {
+                if (card[i][j].getFlag() == 2) {
                     System.out.print("？");
-                }
-                else if (card[i][j].getFlag() == 3){
+                } else if (card[i][j].getFlag() == 3) {
                     System.out.print("⚠");
-                }
-                else if (!card[i][j].isOpened()){
+                } else if (!card[i][j].isOpened()) {
                     System.out.print("□");
-                }
-                else if (card[i][j].isOpened()){
+                } else if (card[i][j].isOpened()) {
                     System.out.print(HALFtoFULLNumber(String.valueOf(card[i][j].getNumOfMine())));
                 }
             }
-            System.out.printf("\n");
+            System.out.print("\n");
         }
     }
+
     //生成したカードの中身表示
-    public static void Game_Over(Square[][] card){
+    public static void Game_Over(Square[][] card) {
         System.out.println(" 　| １２３４５６７８９");
         System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
-        for(int i = 0; i < card.length; i++){
-            System.out.printf(i+1+"　| ");
-            for(int j = 0;j < card[0].length; j++){
-                if(card[i][j].isMine()){
+        for (int i = 0; i < card.length; i++) {
+            System.out.print(i + 1 + "　| ");
+            for (int j = 0; j < card[0].length; j++) {
+                if (card[i][j].isMine()) {
                     System.out.print("×");
-                }
-                else{
+                } else {
                     System.out.print(HALFtoFULLNumber(String.valueOf(card[i][j].getNumOfMine())));
                 }
             }
-            System.out.printf("\n");
+            System.out.print("\n");
         }
     }
+
     //半角数字を全角数字に変換
     private static String HALFtoFULLNumber(String str) {
-        if (str == null){
+        if (str == null) {
             throw new IllegalArgumentException();
         }
         StringBuffer sb = new StringBuffer(str);
@@ -68,15 +67,5 @@ public class Output {
             }
         }
         return sb.toString();
-    }
-
-
-    public static void debug(Square[][] card){
-        for(int i = 0; i < card.length; i++){
-            for(int j = 0;j < card[0].length; j++){
-                System.out.printf("%2d ",card[i][j].getNumOfMine());
-            }
-            System.out.printf("\n");
-        }
     }
 }
