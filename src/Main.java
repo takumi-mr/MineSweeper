@@ -34,7 +34,6 @@ public class Main {
                     System.out.println("すでに空いています");
                 }
             }
-            Output.debug(board.CARD);
         }
         if(GAME_STATE == 1){
             System.out.println("地雷");
