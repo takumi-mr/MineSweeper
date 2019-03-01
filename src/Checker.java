@@ -1,8 +1,19 @@
 public class Checker {
     private int NumOfMine;
+    //private int NumOfCorrect = 0;
     Checker(int NumOfMine){
         this.NumOfMine = NumOfMine;
     }
+    public boolean isClear(Square[][] card){
+        int size = card.length * card[0].length;
+        if(scan_NumOfCorrect(card) == this.NumOfMine || scan_NumOfOpend(card) == size - this.NumOfMine){
+            return true;
+        }
+        return false;
+    }
+    /*public void addNumOfCorrect(){
+        NumOfCorrect++;
+    }*/
     private int scan_NumOfCorrect(Square[][] card){
         int NumOfCorrect = 9;
         for(int i = 0; i < card.length; i++){
@@ -24,12 +35,5 @@ public class Checker {
             }
         }
         return NumOfOpend;
-    }
-    public boolean isClear(Square[][] card){
-        int size = card.length * card[0].length;
-        if(scan_NumOfCorrect(card) == this.NumOfMine || scan_NumOfOpend(card) == size - this.NumOfMine){
-            return true;
-        }
-        return false;
     }
 }

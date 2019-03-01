@@ -12,14 +12,16 @@ public class out {
         return difficulty;
     }
     //カードの状態を表示
-    public static void printout(Square[][] card){
+    public static void out(Square[][] card){
+        System.out.println(" 　|１２３４５６７８９");
         for(int i = 0; i < card.length; i++){
+            System.out.printf(i+1+"　|");
             for(int j = 0; j < card[0].length; j++){
                 if (!card[i][j].isOpened()){
                     System.out.print("□");
                 }
                 else if (card[i][j].isOpened()){
-                    System.out.print(card[i][j].getNumOfMine());
+                    System.out.print(HALFtoFULLNumber(String.valueOf(card[i][j].getNumOfMine())));
                 }
             }
             System.out.printf("\n");
@@ -27,6 +29,7 @@ public class out {
     }
     //生成したカードの中身表示
     public static void Game_Over(Square[][] card){
+        System.out.println("GAME OVER");
         for(int i = 0; i < card.length; i++){
             for(int j = 0;j < card[0].length; j++){
                 if(card[i][j].isMine()){
@@ -52,5 +55,15 @@ public class out {
             }
         }
         return sb.toString();
+    }
+
+
+    public static void debug(Square[][] card){
+        for(int i = 0; i < card.length; i++){
+            for(int j = 0;j < card[0].length; j++){
+                System.out.printf("%2d ",card[i][j].getNumOfMine());
+            }
+            System.out.printf("\n");
+        }
     }
 }

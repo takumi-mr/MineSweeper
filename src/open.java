@@ -1,47 +1,59 @@
 public class open {
-    public static void openSquare(Square[][] card, int Row, int Column){
+    public static void Square(Square[][] card, int Row, int Column){
         if(card[Row][Column].isOpened()){
+            System.out.println("すでに空いています");
             return;
         }
-        openAround(card, Row, Column);
+        else if(card[Row][Column].isMine()){
+            System.out.println("地雷");
+            out.Game_Over(card);
+            return;
+        }
+        open(card, Row, Column);
         init_check(card);
     }
-    private static void openAround(Square[][] card, int Row, int Column){
+    private static void open(Square[][] card, int Row, int Column){
+        if(isNull(card,Row,Column)){
+            return;
+        }
         if(card[Row][Column].Checked){
             return;
         }
+        else if(!card[Row][Column].isZero()){
+            open_and_check(card, Row, Column);
+        }
         else if(card[Row][Column].isZero()){
             open_and_check(card, Row, Column);
-            openAround(card, Row - 1, Column -1);
-            openAround(card, Row - 1, Column);
-            openAround(card, Row - 1, Column + 1);
-            openAround(card, Row, Column -1);
-            openAround(card, Row, Column + 1);
-            openAround(card, Row + 1, Column - 1);
-            openAround(card, Row + 1, Column);
-            openAround(card, Row + 1, Column + 1);
+            open(card, Row - 1, Column -1);
+            open(card, Row - 1, Column);
+            open(card, Row - 1, Column + 1);
+            open(card, Row, Column -1);
+            open(card, Row, Column + 1);
+            open(card, Row + 1, Column - 1);
+            open(card, Row + 1, Column);
+            open(card, Row + 1, Column + 1);
         }
     }
+    //実際のマスの開封
     private static void open_and_check(Square[][] card, int Row, int Column){
-        if(!isNull(card, Row, Column)){
-            card[Row][Column].Open();
-            card[Row][Column].setChecked();
-        }
+        card[Row][Column].Open();
+        card[Row][Column].setChecked();
     }
-    private static boolean isNull(Square[][] card, int Row, int Column){
-        try{
-            if(!card[Row][Column].isOpened()){
-                return false;
-            }
-        }
-        catch(ArrayIndexOutOfBoundsException e){}
-        return true;
-    }
+    //チェックフラグ初期化
     private static void init_check(Square[][] card){
         for(int i = 0; i < card.length; i++){
             for(int j = 0; j < card[0].length; j++){
                 card[i][j].Checked = false;
             }
         }
+    }
+    private static boolean isNull(Square[][] card, int Row, int Column){
+        if(Row >= card.length  || Row < 0){
+            return true;
+        }
+        else if(Column >= card[0].length || Column < 0){
+            return true;
+        }
+        return false;
     }
 }

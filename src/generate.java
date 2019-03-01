@@ -13,6 +13,7 @@ public class generate {
             }
         }
     }
+    //ボムを配置するマスの数字を生成
     private static void generate_Bomb(Square[][] card, int NumOfMine){
         Random rnd = new Random();
         int All = (card.length) * (card[0].length);
@@ -26,34 +27,7 @@ public class generate {
             setMine(card, number, card[0].length);
         }
     }
-    private static void generate_Num(Square[][] card){
-        for(int i=0; i < card.length; i++){
-            for(int j=0; j < card[0].length; j++){
-                if(card[i][j].isMine()){
-                    Around_Search(card, i, j);
-                }
-            }
-        }
-    }
-
-    private static void Around_Search(Square[][] card, int Row, int Column){
-        Around_add(card,Row-1,Column-1);
-        Around_add(card,Row-1,Column);
-        Around_add(card,Row-1,Column+1);
-        Around_add(card,Row,Column-1);
-        Around_add(card,Row,Column+1);
-        Around_add(card,Row+1,Column-1);
-        Around_add(card,Row+1,Column);
-        Around_add(card,Row+1,Column+1);
-    }
-
-    private static void Around_add(Square[][] card, int Row, int Column){
-        try{
-            card[Row][Column].addNumOfMine();
-        }
-        catch(ArrayIndexOutOfBoundsException e){}
-    }
-
+    //数字に対応するマスにボムを配置
     private static void setMine(Square[][] card, int number, int NumOfLine){
         int nline = number / NumOfLine + 1;
         int nrow = number - (NumOfLine * (nline-1));
@@ -62,5 +36,33 @@ public class generate {
             nrow = card[0].length;
         }
         card[nline-1][nrow-1].setMine();
+    }
+    //ボム以外のマスに数字を配置
+    private static void generate_Num(Square[][] card){
+        for(int i=0; i < card.length; i++){
+            for(int j=0; j < card[0].length; j++){
+                if(card[i][j].isMine()){
+                    Around_add(card, i, j);
+                }
+            }
+        }
+    }
+    //周辺マスに対してボム数+1を試行
+    private static void Around_add(Square[][] card, int Row, int Column){
+        add(card,Row-1,Column-1);
+        add(card,Row-1,Column);
+        add(card,Row-1,Column+1);
+        add(card,Row,Column-1);
+        add(card,Row,Column+1);
+        add(card,Row+1,Column-1);
+        add(card,Row+1,Column);
+        add(card,Row+1,Column+1);
+    }
+    //実際に加算を試行
+    private static void add(Square[][] card, int Row, int Column){
+        try{
+            card[Row][Column].addNumOfMine();
+        }
+        catch(ArrayIndexOutOfBoundsException e){}
     }
 }

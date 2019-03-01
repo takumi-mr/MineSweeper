@@ -7,14 +7,16 @@ public class Main {
         Square[][] card = new Square[D.Row][D.Column];
         do{
             generate.generate_Card(card, D.NumOfMine);
-        }while(card[XY.Row][XY.Column].getNumOfMine() == -1);
-        open.openSquare(card, XY.Row, XY.Column);
+        }while(card[XY.Row][XY.Column].getNumOfMine() != 0);
+        open.Square(card, XY.Row, XY.Column);
 
         Checker check = new Checker(D.NumOfMine);
         do{
+            out.out(card);
+            out.debug(card);
             XY.update();
-            open.openSquare(card, XY.Row, XY.Column);
-        }while(check.isClear(card));
-        out.printout(card);
+            open.Square(card, XY.Row, XY.Column);
+        }while(!check.isClear(card));
+        out.Game_Over(card);
     }
 }
