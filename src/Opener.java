@@ -1,17 +1,16 @@
-public class open {
-    public static void Square(Square[][] card, int Row, int Column){
+public class Opener {
+    public static int Square(Square[][] card, int Row, int Column){
         if(card[Row][Column].isOpened()){
             System.out.println("すでに空いています");
-            return;
+            return 0;
         }
         else if(card[Row][Column].isMine()){
-            System.out.println("地雷");
-            System.out.println("GAME OVER");
-            out.Game_Over(card);
-            return;
+            open_and_check(card,Row,Column);
+            return 1;
         }
         open(card, Row, Column);
         init_check(card);
+        return 0;
     }
     private static void open(Square[][] card, int Row, int Column){
         if(isNull(card,Row,Column)){

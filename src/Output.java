@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class out {
+public class Output {
     public static int start(){
         Scanner sc = new Scanner(System.in);
         System.out.println("難易度は？(数字で入力してください)");
@@ -13,10 +13,10 @@ public class out {
     }
     //カードの状態を表示
     public static void out(Square[][] card){
-        System.out.println(" 　|１２３４５６７８９");
-        System.out.println("_＿_＿＿＿＿＿＿＿＿＿");
+        System.out.println(" 　| １２３４５６７８９");
+        System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
         for(int i = 0; i < card.length; i++){
-            System.out.printf(i+1+"　|");
+            System.out.printf(i+1+"　| ");
             for(int j = 0; j < card[0].length; j++){
                 if (!card[i][j].isOpened()){
                     System.out.print("□");
@@ -30,7 +30,10 @@ public class out {
     }
     //生成したカードの中身表示
     public static void Game_Over(Square[][] card){
+        System.out.println(" 　| １２３４５６７８９");
+        System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
         for(int i = 0; i < card.length; i++){
+            System.out.printf(i+1+"　| ");
             for(int j = 0;j < card[0].length; j++){
                 if(card[i][j].isMine()){
                     System.out.print("×");

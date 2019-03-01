@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-public class set_Difficulty {
+class BordDifficulty {
+    int Row = 0;
+    int Column = 0;
+    int NumOfMine = 0;
     public static BordDifficulty input(int n){
         Scanner sc = new Scanner(System.in);
         BordDifficulty D = new BordDifficulty();
@@ -29,16 +32,6 @@ public class set_Difficulty {
             D.NumOfMine = sc.nextInt();
         }
         return D;
-    }
-    static class BordDifficulty {
-        int Row;
-        int Column;
-        int NumOfMine;
-        private BordDifficulty(){
-            Row = 0;
-            Column = 0;
-            NumOfMine = 0;
-        }
     }
 }
 
