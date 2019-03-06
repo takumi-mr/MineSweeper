@@ -3,12 +3,13 @@ public class Open {
         if (card[Row][Column].isOpened()) {
             System.out.println("すでに空いています");
             return 0;
+        } else if (card[Row][Column].getFlag() == 3) {
+            System.out.println("地雷にマーク済みのマスです");
+            System.out.println("別のマスを選択してください");
+            return 0;
         } else if (card[Row][Column].isMine()) {
             open_and_check(card, Row, Column);
             return 1;
-        } else if (card[Row][Column].getFlag() == 1 || card[Row][Column].getFlag() == 2) {
-            System.out.println("マーク済みのマスです");
-            return 0;
         }
         open(card, Row, Column);
         init_check(card);
