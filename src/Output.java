@@ -18,10 +18,19 @@ public class Output {
 
     //カードの状態を表示
     public static void out(Square[][] card) {
-        System.out.println(" 　| １２３４５６７８９");
-        System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
+        System.out.print("   　| ");
+        for (int i = 0; i < card[0].length; i++) {
+            System.out.print(HALFtoFULLNumber(String.valueOf(i + 1)));
+        }
+        System.out.print("\n");
+        System.out.print("___＿__");
+        for (int i = 0; i < card[0].length; i++) {
+            System.out.print("＿");
+        }
+        System.out.print("\n");
         for (int i = 0; i < card.length; i++) {
-            System.out.print(i + 1 + "　| ");
+            System.out.printf("%3d", i + 1);
+            System.out.print("　| ");
             for (int j = 0; j < card[0].length; j++) {
                 if (card[i][j].getFlag() == 2) {
                     System.out.print("？");
@@ -39,10 +48,19 @@ public class Output {
 
     //生成したカードの中身表示
     public static void Game_Over(Square[][] card) {
-        System.out.println(" 　| １２３４５６７８９");
-        System.out.println("_＿__＿＿＿＿＿＿＿＿＿");
+        System.out.print("   　| ");
+        for (int i = 0; i < card[0].length; i++) {
+            System.out.print(HALFtoFULLNumber(String.valueOf(i + 1)));
+        }
+        System.out.print("\n");
+        System.out.print("___＿__");
+        for (int i = 0; i < card[0].length; i++) {
+            System.out.print("＿");
+        }
+        System.out.print("\n");
         for (int i = 0; i < card.length; i++) {
-            System.out.print(i + 1 + "　| ");
+            System.out.printf("%3d", i + 1);
+            System.out.print("　| ");
             for (int j = 0; j < card[0].length; j++) {
                 if (card[i][j].isMine()) {
                     System.out.print("×");
