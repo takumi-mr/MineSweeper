@@ -15,7 +15,7 @@ public class Output {
         while (difficulty != 1 && difficulty != 2 && difficulty != 3 && difficulty != 4);
         return difficulty;
     }
-
+    
     //カードの状態を表示
     public static void out(Square[][] card) {
         System.out.print("   　| ");
@@ -77,7 +77,7 @@ public class Output {
         if (str == null) {
             throw new IllegalArgumentException();
         }
-        StringBuffer sb = new StringBuffer(str);
+        StringBuilder sb = new StringBuilder(str);
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if ('0' <= c && c <= '9') {
