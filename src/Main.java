@@ -20,8 +20,7 @@ public class Main {
             } else {
                 if (board.CARD[board.XY.Row][board.XY.Column].isOpened()) {
                     System.out.println("すでに空いています");
-                }
-                if (MODE == 2) {
+                } else if (MODE == 2) {
                     board.CARD[board.XY.Row][board.XY.Column].setQ();
                 } else if (MODE == 3) {
                     board.CARD[board.XY.Row][board.XY.Column].setMark();
