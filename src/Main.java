@@ -17,17 +17,14 @@ public class Main {
             board.XY.update();
             if (MODE == 1) {
                 GAME_STATE = Open.Square(board.CARD, board.XY.Row, board.XY.Column);
-            } else if (MODE == 2) {
-                if (!board.CARD[board.XY.Row][board.XY.Column].isOpened()) {
-                    board.CARD[board.XY.Row][board.XY.Column].setQ();
-                } else {
+            } else {
+                if (board.CARD[board.XY.Row][board.XY.Column].isOpened()) {
                     System.out.println("すでに空いています");
                 }
-            } else if (MODE == 3) {
-                if (!board.CARD[board.XY.Row][board.XY.Column].isOpened()) {
+                if (MODE == 2) {
+                    board.CARD[board.XY.Row][board.XY.Column].setQ();
+                } else if (MODE == 3) {
                     board.CARD[board.XY.Row][board.XY.Column].setMark();
-                } else {
-                    System.out.println("すでに空いています");
                 }
             }
         }
